@@ -661,7 +661,7 @@ html, body { height:100%; }
 
 
 #kiwi.theme_relaxed .memberlists {
-    background-color: #DADADA;
+    background-color: white;
     border-left: 1px solid #8A8A8A;
 }
 #kiwi.theme_relaxed.narrow .memberlists { display:none; }
@@ -1409,6 +1409,7 @@ html, body { height:100%; }
 #kiwi.theme_basic {
     background: url(../img/background-light.png) left top repeat-x #E3E3E3;
     color: #555555;
+    margin-top: 0px;
 }
 #kiwi.theme_basic,
 #kiwi.theme_basic input,
@@ -1433,9 +1434,9 @@ html, body { height:100%; }
 #kiwi.theme_basic button:disabled { color: #464646; background:#9cc164; }
 
 #kiwi.theme_basic .toolbar {
-    background-color:#1B1B1B; font-size:0.9em;
+    background-color:#aaa; font-size:0.9em;
 }
-#kiwi.theme_basic .controlbox { background-color:#1B1B1B; }
+#kiwi.theme_basic .controlbox { background-color:#aaa;  }
 #kiwi.theme_basic .memberlists_resize_handle {
     /*display:none; width:0;*/
 }
@@ -1452,7 +1453,7 @@ html, body { height:100%; }
     background-color: #eee;
 }
 
-#kiwi.theme_basic .toolbar .tabs { margin-right:0 !important; }
+#kiwi.theme_basic .toolbar .tabs { margin-right:0 !important; background: white;}
 #kiwi.theme_basic .toolbar .panellist .alert_highlight { font-weight:bold; color:red; }
 #kiwi.theme_basic .toolbar .panellist .alert_activity { font-weight:normal; color:green; }
 #kiwi.theme_basic .toolbar .panellist .alert_action { font-weight:normal; color:green; }

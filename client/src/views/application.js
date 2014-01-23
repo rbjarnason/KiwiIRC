@@ -35,11 +35,11 @@ _kiwi.view.Application = Backbone.View.extend({
         $(document).keydown(this.setKeyFocus);
 
         // Confirmation require to leave the page
-        window.onbeforeunload = function () {
-            if (_kiwi.gateway.isConnected()) {
-                return _kiwi.global.i18n.translate('client_views_application_close_notice').fetch();
-            }
-        };
+        //window.onbeforeunload = function () {
+        //    if (_kiwi.gateway.isConnected()) {
+        //        return _kiwi.global.i18n.translate('client_views_application_close_notice').fetch();
+        //    }
+        //};
 
         // Keep tabs on the browser having focus
         this.has_focus = true;
