@@ -29,8 +29,8 @@ conf.servers.push({
     address: "0.0.0.0",
 
     ssl:   true,
-    ssl_key: "server.key",
-    ssl_cert: "cert.pem"
+    ssl_key: "/etc/kiwiirc/server.key",
+    ssl_cert: "/etc/kiwiirc/server.crt"
 });
 
 // Network interface for outgoing connections
