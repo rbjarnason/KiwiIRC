@@ -18,20 +18,20 @@ conf.log = "kiwi.log";
 conf.servers = [];
 
 // Example server block
-conf.servers.push({
-    port:   7778,
-    address: "0.0.0.0"
-});
+//conf.servers.push({
+//    port:   7778,
+//    address: "0.0.0.0"
+//});
 
 // Example SSL server block
-//conf.servers.push({
-//    port:     7777,
-//    address: "0.0.0.0",
-//
-//    ssl:   true,
-//    ssl_key: "server.key",
-//    ssl_cert: "cert.pem"
-//});
+conf.servers.push({
+    port:     7778,
+    address: "0.0.0.0",
+
+    ssl:   true,
+    ssl_key: "server.key",
+    ssl_cert: "cert.pem"
+});
 
 // Network interface for outgoing connections
 conf.outgoing_address = {
@@ -56,7 +56,7 @@ conf.identd = {
 conf.public_http = "client/";
 
 // Max connections per connection. 0 to disable
-conf.max_client_conns = 5;
+conf.max_client_conns = 0;
 
 // Max connections per server. 0 to disable.
 // Setting is ignored if:
@@ -170,7 +170,7 @@ conf.quit_message = "http://www.kiwiirc.com/ - A hand-crafted IRC client";
 
 // Default settings for the client. These may be changed in the browser
 conf.client = {
-    server: '146.185.182.57',
+    server: 'irc.yrpri.org',
     port:    6667,
     ssl:     false,
     channel: '#kiwiirc',
