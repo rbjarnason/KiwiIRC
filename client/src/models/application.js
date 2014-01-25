@@ -301,7 +301,7 @@ _kiwi.model.Application = function () {
             }
 
             // Set any random numbers if needed
-            //defaults.nick = defaults.nick.replace('?', Math.floor(Math.random() * 100000).toString());
+            defaults.nick = defaults.nick.replace('?', Math.floor(Math.random() * 100).toString());
 
             if (getQueryVariable('encoding'))
                 defaults.encoding = getQueryVariable('encoding');
