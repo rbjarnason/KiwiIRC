@@ -171,9 +171,9 @@ conf.client = {
     server: process.env.KIWI_IRC_SERVER_HOST,
     port:    process.env.KIWI_IRC_SERVER_PORT,
     ssl:     false,
-    channel: '#kiwiirc',
+    channel: '#yrpri',
     channel_key: '',
-    nick:    'kiwi_?',
+    nick:    'yrpri_user',
     settings: {
         theme: 'mini',
         channel_list_style: 'tabs',
