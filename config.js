@@ -162,16 +162,14 @@ conf.socks_proxy.port = 1080;
 conf.socks_proxy.user = null;
 conf.socks_proxy.pass = null;
 
-
-
 // Default quit message
-conf.quit_message = "http://www.kiwiirc.com/ - A hand-crafted IRC client";
+conf.quit_message = "Goodbye from Your Priorities";
 
 
 // Default settings for the client. These may be changed in the browser
 conf.client = {
-    server: 'irc.yrpri.org',
-    port:    6667,
+    server: process.env.KIWI_IRC_SERVER_HOST,
+    port:    process.env.KIWI_IRC_SERVER_PORT,
     ssl:     false,
     channel: '#kiwiirc',
     channel_key: '',
@@ -180,7 +178,7 @@ conf.client = {
         theme: 'mini',
         channel_list_style: 'tabs',
         scrollback: 250,
-        show_joins_parts: true,
+        show_joins_parts: false,
         show_timestamps: false,
         mute_sounds: false,
         show_emoticons: true
