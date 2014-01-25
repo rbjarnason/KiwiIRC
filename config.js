@@ -173,7 +173,7 @@ conf.client = {
     ssl:     false,
     channel: '#yrpri',
     channel_key: '',
-    nick:    'yrpri_user',
+    nick:    'yrpri_user_?',
     settings: {
         theme: 'mini',
         channel_list_style: 'tabs',
