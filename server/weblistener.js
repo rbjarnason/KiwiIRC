@@ -1,5 +1,5 @@
 var engine       = require('engine.io'),
-    WebsocketRpc = require('./websocketrpc.js');
+    WebsocketRpc = require('./websocketrpc.js'),
     events       = require('events'),
     http         = require('http'),
     https        = require('https'),
@@ -10,6 +10,7 @@ var engine       = require('engine.io'),
     _            = require('lodash'),
     spdy         = require('spdy'),
     ipaddr       = require('ipaddr.js'),
+    winston      = require('winston'),
     Client       = require('./client.js').Client,
     HttpHandler  = require('./httphandler.js').HttpHandler,
     rehash       = require('./rehash.js');
@@ -72,7 +73,6 @@ var WebListener = module.exports = function (web_config) {
     });
 
     this.ws = engine.attach(hs, {
-        transports: ['websocket', 'polling', 'flashsocket'],
         path: (global.config.http_base_path || '') + '/transport'
     });
 
@@ -124,7 +124,8 @@ function rangeCheck(addr, range) {
  */
 function initialiseSocket(socket, callback) {
     var request = socket.request,
-        address = request.connection.remoteAddress;
+        address = request.connection.remoteAddress,
+        revdns;
 
     // Key/val data stored to the socket to be read later on
     // May also be synced to a redis DB to lookup clients
@@ -134,7 +135,7 @@ function initialiseSocket(socket, callback) {
     if (request.headers[global.config.http_proxy_ip_header || 'x-forwarded-for']) {
         // Check we're connecting from a whitelisted proxy
         if (!global.config.http_proxies || !rangeCheck(address, global.config.http_proxies)) {
-            console.log('Unlisted proxy:', address);
+            winston.info('Unlisted proxy: %s', address);
             callback(null, false);
             return;
         }
@@ -155,15 +156,32 @@ function initialiseSocket(socket, callback) {
 
     try {
         dns.reverse(address, function (err, domains) {
-            if (err || domains.length === 0) {
-                socket.meta.revdns = address;
-            } else {
-                socket.meta.revdns = _.first(domains) || address;
+            if (!err && domains.length > 0) {
+                revdns = _.first(domains);
             }
 
-            // All is well, authorise the connection
-            callback(null, true);
+            if (!revdns) {
+                // No reverse DNS found, use the IP
+                socket.meta.revdns = address;
+                callback(null, true);
+
+            } else {
+                // Make sure the reverse DNS matches the A record to use the hostname..
+                dns.lookup(revdns, function (err, ip_address, family) {
+                    if (!err && ip_address == address) {
+                        // A record matches PTR, perfectly valid hostname
+                        socket.meta.revdns = revdns;
+                    } else {
+                        // A record does not match the PTR, invalid hostname
+                        socket.meta.revdns = address;
+                    }
+
+                    // We have all the info we need, proceed with the connection
+                    callback(null, true);
+                });
+            }
         });
+
     } catch (err) {
         socket.meta.revdns = address;
         callback(null, true);
