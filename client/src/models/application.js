@@ -126,39 +126,7 @@
         panels: (function() {
             var active_panel;
 
-                if (this.server_settings.connection.port) {
-                    defaults.port = this.server_settings.connection.port;
-                }
 
-                if (this.server_settings.connection.ssl) {
-                    defaults.ssl = this.server_settings.connection.ssl;
-                }
-
-                if (this.server_settings.connection.channel) {
-                    defaults.channel = this.server_settings.connection.channel;
-                }
-
-                if (this.server_settings.connection.channel_key) {
-                    defaults.channel_key = this.server_settings.connection.channel_key;
-                }
-
-                if (this.server_settings.connection.nick) {
-                    defaults.nick = this.server_settings.connection.nick;
-                }
-            }
-
-            // Set any random numbers if needed
-            defaults.nick = defaults.nick.replace('?', Math.floor(Math.random() * 100).toString());
-
-            if (getQueryVariable('encoding'))
-                defaults.encoding = getQueryVariable('encoding');
-
-            // Populate the server select box with defaults
-            new_connection_dialog.view.populateFields(defaults);
-        };
-
-
-        this.panels = (function() {
             var fn = function(panel_type) {
                 var panels;
 
@@ -348,10 +316,7 @@
                 '/devoice':  '/quote mode $channel -v $1+',
                 '/k':        '/kick $channel $1+',
                 '/ban':      '/quote mode $channel +b $1+',
-                '/unban':    '/quote mode $channel -b $1+',
-
-                // Misc aliases
-                '/slap':     '/me slaps $1 around a bit with a large trout'
+                '/unban':    '/quote mode $channel -b $1+'
             });
 
             // Functions to bind to controlbox events

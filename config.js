@@ -163,30 +163,38 @@ conf.socks_proxy.user = null;
 conf.socks_proxy.pass = null;
 
 // Default quit message
-conf.quit_message = "Goodbye from Your Priorities";
+conf.quit_message = "Bless frá Betri Reykjavík";
 
 
 // Default settings for the client. These may be changed in the browser
 conf.client = {
-    server: process.env.KIWI_IRC_SERVER_HOST,
+    server: "irc.yrpri.org",
     port:    process.env.KIWI_IRC_SERVER_PORT,
     ssl:     false,
     channel: '#yrpri',
     channel_key: '',
     nick:    'yrpri_user_?',
     settings: {
-        theme: 'mini',
+        theme: 'yrpri',
         channel_list_style: 'tabs',
-        scrollback: 250,
+        scrollback: 1000,
         show_joins_parts: false,
-        show_timestamps: false,
+        show_timestamps: true,
+        use_24_hour_timestamps: true,
         mute_sounds: false,
         show_emoticons: true
     },
-    window_title: 'yrpri irc'
+    window_title: 'Betri hverfi netspjall'
 };
 
 
+conf.client_themes = [
+    'relaxed',
+    'mini',
+    'cli',
+    'basic',
+    'yrpri'
+];
 // If set, the client may only connect to this 1 IRC server
 //conf.restrict_server = "irc.kiwiirc.com";
 //conf.restrict_server_port = 6667;

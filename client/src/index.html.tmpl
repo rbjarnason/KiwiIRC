@@ -147,11 +147,6 @@
     <script type="text/html" id="tmpl_server_select">
         <div class="server_select">
 
-            <div class="side_panel" style="position:absolute;top:0px;left:320px;">
-                <div class="content" style="position:relative;width:300px;">
-                </div>
-            </div>
-
             <div class="server_details" style="position:relative;width:320px;">
                 <div class="status"><%= think_nick %></div>
 
@@ -174,15 +169,14 @@
                                 <td><input type="password" class="password" id="server_select_password"></td>
                             </tr>
 
-                            <tr class="channel">
-                                <td><label for="server_select_channel"><%= channel %></label></td>
-                                <td>
-                                    <div style="position:relative;">
-                                        <input type="text" class="channel" id="server_select_channel">
-                                        <i class="icon-key" title="<%= channel_key %>"></i>
-                                    </div>
-                                </td>
-                            </tr>
+
+                            <td class="channel"><label for="server_select_channel"><%= channel %></label></td>
+                            <td>
+                                <div style="position:relative;">
+                                    <input type="text" class="channel" id="server_select_channel">
+                                    <i class="icon-key" title="<%= channel_key %>"></i>
+                                </div>
+                            </td>
 
                             <tr class="have_key">
                                 <td colspan="2">
@@ -225,7 +219,7 @@
                     </div>
                 </form>
 
-                <a class="kiwi_logo" href="https://kiwiirc.com/" target="_blank">
+                <a class="kiwi_logo" href="https://kiwiirc.com/" target="_blank" style="display:none;">
                     <h1><span><%= powered_by %></span> <img src="<%base_path%>/assets/img/ico.png" alt="KiwiIRC Logo" title="Kiwi IRC" /></h1>
                 </a>
             </div>
