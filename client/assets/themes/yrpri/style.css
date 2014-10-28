@@ -11,7 +11,9 @@
 }
 
 .topic {
-    display: block;
+    display: inline;
+    float: left;
+    width: 100%;
 }
 
 #kiwi {
@@ -242,7 +244,7 @@
 #kiwi .toolbar .topic div {
     top:2; bottom:2px; left:0; width:100%;
     padding: 0.2em 1em;
-    text-align: center;
+    text-align: left;
     box-shadow: none;
     border-radius: 0;
     background-color:#FFF;
