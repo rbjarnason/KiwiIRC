@@ -11,7 +11,7 @@
 }
 
 .topic {
-    display: none;
+    display: block;
 }
 
 #kiwi {
@@ -118,7 +118,7 @@
 
 #kiwi .messages .msg.action .nick,
 #kiwi .messages .msg.static .nick,
-#kiwi .messages .msg.topic .nick { display:none; }
+#kiwi .messages .msg.topic .nick { display:block; }
 
 #kiwi .messages .msg.action .text { color:#009900; font-style:italic; }
 #kiwi .messages .msg.action.join { color:#009900; }
