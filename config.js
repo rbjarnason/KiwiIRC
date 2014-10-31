@@ -30,6 +30,7 @@ conf.servers.push({
 
     ssl:   true,
     ssl_key: "/etc/kiwiirc/server.key",
+    ssl_ca: "/etc/kiwiirc/server.ca",
     ssl_cert: "/etc/kiwiirc/server.crt"
 });
 
