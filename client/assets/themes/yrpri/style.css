@@ -28,6 +28,12 @@
     .right_bar {
         display: none;
     }
+    .time {
+        display: none !important;
+    }
+    .nick {
+        margin-right: 5px !important;
+    }
 }
 
 #kiwi {
